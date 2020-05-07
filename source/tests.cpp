@@ -43,10 +43,13 @@ TEST_CASE("describe_gcd", "[gcd]") {
   REQUIRE(gcd(20, 20) == 20);
 }
 
-int checksum(unsigned int a) {
+int checksum(int a) {
     int sum = 0;
+    if (a < 0) {
+        a = a * -1;
+    }
     for (int i = 1; i <= a; i = i * 10) {
-        sum = a / i % 10 + sum;
+        sum = (a / i) % 10 + sum;
     }
     std::cout << sum << std::endl;
     return sum;
@@ -55,6 +58,7 @@ int checksum(unsigned int a) {
 TEST_CASE("describe_checksum", "[checksum]") {
   REQUIRE(checksum(25) == 7);
   REQUIRE(checksum(0) == 0);
+  REQUIRE(checksum(1982) == 20);
   REQUIRE(checksum(-1982) == 20);
 }
 
