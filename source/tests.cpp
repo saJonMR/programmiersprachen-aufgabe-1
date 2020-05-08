@@ -65,9 +65,9 @@ TEST_CASE("describe_checksum", "[checksum]") {
 }
 
 //Aufgabe 1.10
-int sum_multiples() {
+int sum_multiples(int limit) {
   int sum = 0;
-  for (int i = 1; i <= 1000; i++) {
+  for (int i = 1; i <= limit; i++) {
     if(i % 3 == 0 || i % 5 == 0) {
       sum = sum + i;
     }
@@ -77,7 +77,9 @@ int sum_multiples() {
 }
 
 TEST_CASE("describe_sum_multiples", "[sum_mulitples]") {
-  REQUIRE(sum_multiples() == 234168);
+  REQUIRE(sum_multiples(1000) == 234168);
+  REQUIRE(sum_multiples(20) == 98);
+  REQUIRE(sum_multiples(5) == 8);
 }
 
 //Aufgabe 1.11
@@ -123,7 +125,45 @@ TEST_CASE("describe_zylOb", "[zylOb]") {
   REQUIRE(zylOb(20, 0) == 0);
 }
 
+//Aufgabe 1.13
+float factorial(float a) {
+  float sum = 1;
+  for(float i = 1; i <= a; i++) {
+    sum = sum * i;
+  }
+  return sum;
+}
 
+TEST_CASE("describe_factorial", "[factorial]") {
+  REQUIRE(factorial(4) == 24);
+  REQUIRE(factorial(0) == 1);
+  REQUIRE(factorial(9) == 362880);
+  REQUIRE(factorial(10) == 3628800);
+  REQUIRE(factorial(18) == Approx(6402373705728000));
+}
+
+//Aufgabe 1.14
+bool is_prime(int a) {
+  if(a <= 1) {
+    return false;
+  } else {
+    for(int i = 2; i < a; i++) {
+      if(a % i == 0) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
+  return 0;
+}
+
+TEST_CASE("describe_is_prime", "[is_prime]") {
+  REQUIRE(is_prime(7) == true);
+  REQUIRE(is_prime(100) == false);
+  REQUIRE(is_prime(1) == false);
+  REQUIRE(is_prime(199) == true);
+}
 
 int main(int argc, char* argv[])
 {
