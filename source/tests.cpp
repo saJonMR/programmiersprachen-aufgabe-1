@@ -64,7 +64,7 @@ TEST_CASE("describe_checksum", "[checksum]") {
   REQUIRE(checksum(-1982) == 20);
 }
 
-//Aufgabe 1.10
+//Aufgabe 1.10 - UPDATED
 int sum_multiples(int limit) {
   int sum = 0;
   for (int i = 1; i <= limit; i++) {
